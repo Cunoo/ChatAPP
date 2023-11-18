@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B629D892B095A7700BA60B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B629D882B095A7700BA60B9 /* GoogleService-Info.plist */; };
 		6BBC45D82B0957B500BDB52E /* ChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBC45D72B0957B500BDB52E /* ChatApp.swift */; };
 		6BBC45DA2B0957B500BDB52E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBC45D92B0957B500BDB52E /* ContentView.swift */; };
 		6BBC45DC2B0957B600BDB52E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BBC45DB2B0957B600BDB52E /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B629D882B095A7700BA60B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6BBC45D42B0957B500BDB52E /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BBC45D72B0957B500BDB52E /* ChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatApp.swift; sourceTree = "<group>"; };
 		6BBC45D92B0957B500BDB52E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -82,12 +84,13 @@
 				6BBC45E72B09583B00BDB52E /* login_view.swift */,
 				6BBC45D72B0957B500BDB52E /* ChatApp.swift */,
 				6BBC45D92B0957B500BDB52E /* ContentView.swift */,
+				6B629D882B095A7700BA60B9 /* GoogleService-Info.plist */,
 				6BBC45FE2B09599D00BDB52E /* profile_view.swift */,
 				6BBC45FC2B09596700BDB52E /* register_view.swift */,
 				6BBC46002B0959DA00BDB52E /* home_view.swift */,
+				6BBC46022B095A0100BDB52E /* user_action.swift */,
 				6BBC45DB2B0957B600BDB52E /* Assets.xcassets */,
 				6BBC45DD2B0957B600BDB52E /* Preview Content */,
-				6BBC46022B095A0100BDB52E /* user_action.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			files = (
 				6BBC45DF2B0957B600BDB52E /* Preview Assets.xcassets in Resources */,
 				6BBC45DC2B0957B600BDB52E /* Assets.xcassets in Resources */,
+				6B629D892B095A7700BA60B9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
