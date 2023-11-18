@@ -23,6 +23,7 @@
 		6BBC45FB2B0958FA00BDB52E /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 6BBC45FA2B0958FA00BDB52E /* FirebaseMessaging */; };
 		6BBC45FD2B09596700BDB52E /* register_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBC45FC2B09596700BDB52E /* register_view.swift */; };
 		6BBC45FF2B09599D00BDB52E /* profile_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBC45FE2B09599D00BDB52E /* profile_view.swift */; };
+		6BBC46012B0959DA00BDB52E /* home_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBC46002B0959DA00BDB52E /* home_view.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		6BBC45E72B09583B00BDB52E /* login_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = login_view.swift; sourceTree = "<group>"; };
 		6BBC45FC2B09596700BDB52E /* register_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = register_view.swift; sourceTree = "<group>"; };
 		6BBC45FE2B09599D00BDB52E /* profile_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profile_view.swift; sourceTree = "<group>"; };
+		6BBC46002B0959DA00BDB52E /* home_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = home_view.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				6BBC45D92B0957B500BDB52E /* ContentView.swift */,
 				6BBC45FE2B09599D00BDB52E /* profile_view.swift */,
 				6BBC45FC2B09596700BDB52E /* register_view.swift */,
+				6BBC46002B0959DA00BDB52E /* home_view.swift */,
 				6BBC45DB2B0957B600BDB52E /* Assets.xcassets */,
 				6BBC45DD2B0957B600BDB52E /* Preview Content */,
 			);
@@ -179,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BBC45DA2B0957B500BDB52E /* ContentView.swift in Sources */,
+				6BBC46012B0959DA00BDB52E /* home_view.swift in Sources */,
 				6BBC45FD2B09596700BDB52E /* register_view.swift in Sources */,
 				6BBC45E82B09583B00BDB52E /* login_view.swift in Sources */,
 				6BBC45FF2B09599D00BDB52E /* profile_view.swift in Sources */,
