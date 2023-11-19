@@ -61,8 +61,9 @@ struct RegisterView: View {
                         
                         TextField(
                             "",
-                            text: $email, prompt:Text("Enter email").foregroundStyle(.white) // to change prompt color
+                            text: $email, prompt:Text("Enter email").foregroundStyle(.white) as? Text // to change prompt color
                         )
+                        .disableAutocorrection(true)
                        
                         
                     }//Section
@@ -73,7 +74,7 @@ struct RegisterView: View {
                     Section(header: Text("password")){
                         SecureField(
                             "",
-                            text: $password, prompt:Text("Enter password").foregroundStyle(.white) // to change prompt color
+                            text: $password, prompt:Text("Enter password").foregroundStyle(.white) as? Text // to change prompt color
                         )
                         
                        
@@ -86,7 +87,7 @@ struct RegisterView: View {
                     Section(header: Text("Retype password")){
                         SecureField(
                             "",
-                            text: $password_check, prompt:Text("Enter password").foregroundStyle(.white) // to change prompt color
+                            text: $password_check, prompt:Text("Enter password").foregroundStyle(.white) as? Text // to change prompt color
                         )
                         
                        
@@ -193,6 +194,9 @@ struct RegisterView: View {
 
 
 
-#Preview {
-    RegisterView()
+
+struct RegisterView_Previews: PreviewProvider {
+    static var previews: some View {
+        RegisterView()
+    }
 }

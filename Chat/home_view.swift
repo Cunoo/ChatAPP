@@ -35,14 +35,17 @@ struct HomeView: View {
                             Label("Menu", systemImage: "list.dash")
                         }
 
-//                    ProfileView()
-//                        .tabItem {
-//                            Label("Order", systemImage: "person")
-//                        }
+                   ProfileView()
+                       .tabItem {
+                            Label("Order", systemImage: "person")
+                        }
                 }
     }
 }
 
-#Preview {
-    HomeView()
+
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
+    }
 }

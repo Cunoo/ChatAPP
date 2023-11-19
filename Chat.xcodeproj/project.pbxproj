@@ -83,12 +83,12 @@
 			children = (
 				6BBC45E72B09583B00BDB52E /* login_view.swift */,
 				6BBC45D72B0957B500BDB52E /* ChatApp.swift */,
+				6BBC46022B095A0100BDB52E /* user_action.swift */,
 				6BBC45D92B0957B500BDB52E /* ContentView.swift */,
 				6B629D882B095A7700BA60B9 /* GoogleService-Info.plist */,
 				6BBC45FE2B09599D00BDB52E /* profile_view.swift */,
 				6BBC45FC2B09596700BDB52E /* register_view.swift */,
 				6BBC46002B0959DA00BDB52E /* home_view.swift */,
-				6BBC46022B095A0100BDB52E /* user_action.swift */,
 				6BBC45DB2B0957B600BDB52E /* Assets.xcassets */,
 				6BBC45DD2B0957B600BDB52E /* Preview Content */,
 			);

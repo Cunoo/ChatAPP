@@ -69,9 +69,10 @@ struct LoginView: View {
                     Section(header: Text("email")){
                         TextField(
                             "",
-                            text: $email, prompt:Text("enter email").foregroundStyle(.white) // to change prompt color
+                            text: $email, prompt:Text("enter email") // to change prompt color
                         )
                         .focused($focusField, equals: .email)
+                        .disableAutocorrection(true)
                         
                     }//Section
                     .listRowBackground(Color(red: 0.29, green: 0.23, blue: 0.44)) // backgroung color of section
@@ -89,7 +90,7 @@ struct LoginView: View {
                         
                         SecureField(
                             "",
-                            text: $password, prompt:Text("enter password").foregroundStyle(.white) // to change prompt color
+                            text: $password, prompt:Text("enter password").foregroundColor(.white) // to change prompt color
                         ) // password
                         .focused($focusField, equals: .password)
                         .submitLabel(.done)
@@ -209,8 +210,8 @@ struct LoginView: View {
 
 
 
-
-#Preview {
-    LoginView()
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginView()
+    }
 }
-
