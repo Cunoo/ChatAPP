@@ -150,7 +150,7 @@ struct ProfileView: View {
                     .listRowBackground(Color(red: 0.16, green: 0.13, blue: 0.22)) // backgroung color of section
                 } // List
                 .background(Color(red: 0.16, green: 0.13, blue: 0.22))
-
+                
                 .scrollContentBackground(.hidden)
                 
                 .navigationTitle("Chat App") // name

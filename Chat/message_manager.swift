@@ -13,6 +13,8 @@ import FirebaseFirestoreSwift
 import SwiftUI
 import FirebaseAuth
 import FirebaseDatabase
+
+
 struct Message: Identifiable, Codable {
     var id: String
     var text: String
@@ -55,10 +57,10 @@ class MessagesManager: ObservableObject {
     func getUsername()  -> String {
         var userName_1: String = ""
         ref.child("users/\(userUID!)/username").getData(completion:  { error, snapshot in
-          guard error == nil else {
-            print(error!.localizedDescription)
-            return;
-          }
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return;
+            }
             return userName_1 = snapshot?.value as? String ?? "Unknown";
             
         });
@@ -75,7 +77,7 @@ class MessagesManager: ObservableObject {
         
         getMessages()
     }
-
+    
     // Read message from Firestore in real-time with the addSnapShotListener
     func getMessages() {
         db.collection("messages").addSnapshotListener { querySnapshot, error in
@@ -95,7 +97,7 @@ class MessagesManager: ObservableObject {
                 } catch {
                     // If we run into an error, print the error in the console
                     print("Error decoding document into Message: \(error)")
-
+                    
                     // Return nil if we run into an error - but the compactMap will not include it in the final array
                     return nil
                 }

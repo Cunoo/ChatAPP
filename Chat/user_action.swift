@@ -21,11 +21,11 @@ func getUserID() {
 func signOut(){
     let firebaseAuth = Auth.auth()
     do {
-      try firebaseAuth.signOut()
+        try firebaseAuth.signOut()
         print("user logout")
         //changeRootView()
     } catch let signOutError as NSError {
-      print("Error signing out: %@", signOutError)
+        print("Error signing out: %@", signOutError)
     }
 }
 
@@ -56,10 +56,10 @@ class UserInformationHandling: ObservableObject{
     func getUserName()  -> String {
         var get_username:String? = "Unknown"
         ref.child("users/\(userUID!)/username").getData(completion:  { error, snapshot in
-          guard error == nil else {
-            print(error!.localizedDescription)
-            return;
-          }
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return;
+            }
             
             get_username = snapshot?.value as? String ?? "Unknown";
         });
@@ -76,22 +76,22 @@ class UserInformationHandling: ObservableObject{
         let ref = Database.database().reference()
         ref.child("users").child(userUID!).setValue(["username": username])
         print(ref)
-
+        
     }
     
     func changePassword(password: String){
         let user = Auth.auth().currentUser // get current user
         //var credential: AuthCredential
-
+        
         // Prompt the user to re-provide their sign-in credentials
-
+        
         if user != nil {
             Auth.auth().currentUser?.updatePassword(to: password) { error in
                 print(error!)
             }
         } else {
-          // No user is signed in.
-          // ...
+            // No user is signed in.
+            // ...
         }
     }
     
