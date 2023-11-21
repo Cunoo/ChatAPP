@@ -23,7 +23,7 @@ func signOut(){
     do {
       try firebaseAuth.signOut()
         print("user logout")
-        changeRootView()
+        //changeRootView()
     } catch let signOutError as NSError {
       print("Error signing out: %@", signOutError)
     }

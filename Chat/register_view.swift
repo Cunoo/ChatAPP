@@ -17,22 +17,22 @@ struct userInformation {
 }
 
 
-func signUpUser(email: String, password: String) -> any View {
-    
-    // Attempt to create a new user with the given email and password
-    Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-        // This completion block will be executed once the user creation operation is completed
-        
-        if let error = error {
-            // If there is an error during the user creation process, handle the error
-            print("Error creating user: \(error.localizedDescription)")
-        } else if let authResult = authResult {
-            // If the user creation is successful, you can access the user information in authResult
-            
-            print("User created successfully. User ID: \(authResult.user.uid)")
-        }
-    } as! (any View)
-}
+//func signUpUser(email: String, password: String) -> any View {
+//
+//    // Attempt to create a new user with the given email and password
+//    Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+//        // This completion block will be executed once the user creation operation is completed
+//
+//        if let error = error {
+//            // If there is an error during the user creation process, handle the error
+//            print("Error creating user: \(error.localizedDescription)")
+//        } else if let authResult = authResult {
+//            // If the user creation is successful, you can access the user information in authResult
+//
+//            print("User created successfully. User ID: \(authResult.user.uid)")
+//        }
+//    } as! (any View)
+//}
 
 struct RegisterView: View {
     @State private var email: String = "";
@@ -61,7 +61,7 @@ struct RegisterView: View {
                         
                         TextField(
                             "",
-                            text: $email, prompt:Text("Enter email").foregroundStyle(.white) as? Text // to change prompt color
+                            text: $email, prompt:Text("Enter email").foregroundColor(.white) // to change prompt color
                         )
                         .disableAutocorrection(true)
                        
@@ -72,10 +72,11 @@ struct RegisterView: View {
                     .submitLabel(.next)
                     
                     Section(header: Text("password")){
-                        SecureField(
+                        TextField(
                             "",
-                            text: $password, prompt:Text("Enter password").foregroundStyle(.white) as? Text // to change prompt color
+                            text: $password, prompt:Text("Enter password").foregroundColor(.white) // to change prompt color
                         )
+                        
                         
                        
                         
@@ -85,9 +86,9 @@ struct RegisterView: View {
                     .submitLabel(.next)
                     
                     Section(header: Text("Retype password")){
-                        SecureField(
+                        TextField(
                             "",
-                            text: $password_check, prompt:Text("Enter password").foregroundStyle(.white) as? Text // to change prompt color
+                            text: $password_check, prompt:Text("Enter password").foregroundColor(.white) // to change prompt color
                         )
                         
                        
@@ -136,11 +137,15 @@ struct RegisterView: View {
                                 Text("Sign Up")
                             }
                             .alert("Email is already in use!", isPresented: $emailValid) {
-                                        Button("OK", role: .cancel) { }
-                                    } // if email already in use
+                                Button("OK", role: .cancel) { }
+                            }
                             .alert("Passwords are not the same!", isPresented: $passwordValid) {
-                                        Button("OK", role: .cancel) { }
-                                    } // if passwords are the same
+                                Button("OK", role: .cancel) { }
+                            }
+                            .alert("User created!", isPresented: $userCreated) {
+                                Button("OK", role: .cancel) { }
+                            }
+                            
                             .alert("User created!", isPresented: $userCreated) {
                                         Button("OK", role: .cancel) {
                                             let window = UIApplication
@@ -184,10 +189,10 @@ struct RegisterView: View {
                     }
                 }
             } // navigation stack
+            
                         
             
         } // ZStack
-
         
     }
 }

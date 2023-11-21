@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseCore
+import FirebaseFirestore
 
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
@@ -21,6 +22,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct ChatApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    //let db = Firestore.firestore()
     var body: some Scene {
         WindowGroup {
             LoginView()

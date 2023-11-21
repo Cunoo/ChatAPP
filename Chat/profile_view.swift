@@ -10,7 +10,7 @@
 import Foundation
 import SwiftUI
 
-
+var USERNAME: String = ""
 
 
 struct ProfileView: View {
@@ -26,10 +26,11 @@ struct ProfileView: View {
     @State private var change_password_valid: Bool = false
     @State private var change_username:Bool = false
     @State private var all_at_once:Bool = false
-    @State private var all_at_once_number: Int = 0
     func getName() -> Text {
         if info_handling.value != nil {
+            
             return Text("enter username (your username is: \(info_handling.value!)")
+            
         }
         else {
             return Text("Username is not set")
@@ -160,24 +161,7 @@ struct ProfileView: View {
                     for: .navigationBar) //background color of the title
                 .toolbarBackground(.visible, for: .navigationBar) // visible
             } // Navigation Stack
-                
         } //ZStack
-        
-       
-        
-        
-        /*
-        TabView {
-                    RegisterView()
-                        .tabItem {
-                            Label("Menu", systemImage: "list.dash")
-                        }
-
-                    LoginView()
-                        .tabItem {
-                            Label("Order", systemImage: "person")
-                        }
-                }*/
     }
 }
 
@@ -187,3 +171,6 @@ struct ProfileView_Previews: PreviewProvider {
         ProfileView()
     }
 }
+
+
+

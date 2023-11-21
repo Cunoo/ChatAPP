@@ -36,7 +36,7 @@ struct LoginView: View {
     @FocusState private var focusField : Field?;
     @State private var buttonsDisabled = true;
     @State private var showingAlert = false // pop up error window
-    
+    @State private var signUpButtonPressed: Bool = false // disable alert when sign up
     
     
     
@@ -47,36 +47,42 @@ struct LoginView: View {
         ZStack{
             
             Color(red: 0.16, green: 0.13, blue: 0.22)
-            .ignoresSafeArea()
-
+                .ignoresSafeArea()
+            
             
             NavigationStack {
-                
-                
                 List{
-                    Section{
-                        Image(systemName: "text.bubble") // image
-                            .resizable() // allow resize image
-                        
-                        .padding()
-                        .background(Color(red: 0.16, green: 0.13, blue: 0.22)) // background color of the image
-                        
-                        .aspectRatio(contentMode: .fill)
-                        
-                    }//Section
+                    HStack {
+                        Spacer()
+                        Section{
+                            
+                            Image(systemName: "text.bubble") // image
+                                .resizable() // allow resize image
+                            
+                                .padding()
+                                .background(Color(red: 0.16, green: 0.13, blue: 0.22)) // background color of the image
+                            
+                            //.aspectRatio(contentMode: .fill)
+                                .frame(width:250,height: 250)
+                            
+                        }//Section
+                        Spacer()
+                    }//HStack
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0)) // delete white lines around the image
+                    .listRowBackground(Color(red: 0.16, green: 0.13, blue: 0.22))
+                    
                     
                     Section(header: Text("email")){
                         TextField(
                             "",
-                            text: $email, prompt:Text("enter email") // to change prompt color
+                            text: $email, prompt:Text("enter email").foregroundColor(.white) // to change prompt color
                         )
                         .focused($focusField, equals: .email)
                         .disableAutocorrection(true)
                         
                     }//Section
                     .listRowBackground(Color(red: 0.29, green: 0.23, blue: 0.44)) // backgroung color of section
-                    .foregroundColor(.white) // name of section color
+                    .foregroundColor(.white) // name & input of section color
                     .submitLabel(.next)
                     .onSubmit {
                         focusField = .password;
@@ -102,10 +108,10 @@ struct LoginView: View {
                     }
                     //.onChange(of: password){ _ in
                     //    enableButtons()
-                   // }
+                    // }
                     
                     
-                    HStack{
+                    //HStack{
                         Section {
                             Button(action: {
                                 Task {
@@ -117,51 +123,63 @@ struct LoginView: View {
                                             .shared
                                             .connectedScenes
                                             .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
-                                                        .first { $0.isKeyWindow }
-                                        window?.rootViewController = UIHostingController(rootView: HomeView()) // set HomeView as root
-                                                window?.makeKeyAndVisible()
+                                            .first { $0.isKeyWindow }
+                                        window?.rootViewController = UIHostingController(rootView: TabbingView()) // set HomeView as root
+                                        window?.makeKeyAndVisible()
                                     } catch {
                                         print(error.localizedDescription)
                                         showingAlert = true // login error
                                         
                                     }
                                 }
-                            }) {
+                            }
+                            ) {
                                 Text("Log In")
+                                    .background(Color(red: 0.29, green: 0.23, blue: 0.44))
+                                    .padding(.horizontal, 8)
+                                    .frame(width: 125,height: 44)
+                                    .foregroundColor(.white)
+                                    .background(Color(red: 0.29, green: 0.23, blue: 0.44))
+                                    .cornerRadius(8)
+                                    
+                                    .buttonStyle(.borderless)
+                                
                                 
                             }
+                            .listRowBackground(Color(red: 0.16, green: 0.13, blue: 0.22))
                             //.buttonStyle(PressEffectButtonStyle())
                             .alert("Your email or password is wrong!", isPresented: $showingAlert) {
-                                        Button("OK", role: .cancel) { }
-                                    } // check correct email or passwords
+                                Button("OK", role: .cancel) { }
+                            } // check correct email or passwords
                             
-                            ForEach((1...8), id: \.self){_ in
-                                Spacer() // spacing between buttons
-                            }
-                                
+//                            ForEach((1...8), id: \.self){_ in
+//                                Spacer() // spacing between buttons
+//                            }
+                            
+                            
+                        } //Section
+                        Section {
                             NavigationLink(destination: RegisterView()) {
-                                Button("Sign Up") {
-                                }
+                                Text("Sign Up")
                                 .background(Color(red: 0.29, green: 0.23, blue: 0.44))
                                 .padding(.horizontal, 8)
-                                .frame(width: 125,height: 44)
+                                .frame(width: 120,height: 40)
                                 .foregroundColor(.white)
                                 .background(Color(red: 0.29, green: 0.23, blue: 0.44))
                                 .cornerRadius(8)
                             } // NavigatonLink
-                        
-                            
-                        } //Section
+                        }
                         //.disabled(buttonsDisabled) // allow buttons when both field are filled
                         
-                    }// HStack
+                    //}// HStack
                     .listRowBackground(Color(red: 0.16, green: 0.13, blue: 0.22)) // backgroung color of section
                     
-
+                    
                 } // List
                 
+                
                 .background(Color(red: 0.16, green: 0.13, blue: 0.22))
-
+                
                 .scrollContentBackground(.hidden)
                 
                 .navigationTitle("Chat App") // name
@@ -173,7 +191,7 @@ struct LoginView: View {
                 .toolbarBackground(.visible, for: .navigationBar) // visible
                 //.scrollDisabled(true) //disable scrolling
                 //.ignoresSafeArea(.keyboard, edges: .bottom) //<- here
-
+                
                 
                 
                 
@@ -192,20 +210,20 @@ struct LoginView: View {
     }
     
     //login function
-    static func login(email: String, password: String){
-        Task {
-            do {
-                try await Auth.auth().signIn(withEmail: email, password: password)
-                print("success")
-                // Handle successful login, e.g., navigate to the next screen
-            } catch {
-                print(error.localizedDescription)
-                
-                // Handle login error, e.g., show an error message to the user
-            }
-        }
-    }
-
+    //    static func login(email: String, password: String){
+    //        Task {
+    //            do {
+    //                try await Auth.auth().signIn(withEmail: email, password: password)
+    //                print("success")
+    //                // Handle successful login, e.g., navigate to the next screen
+    //            } catch {
+    //                print(error.localizedDescription)
+    //
+    //                // Handle login error, e.g., show an error message to the user
+    //            }
+    //        }
+    //    }
+    
 } // LoginView
 
 
