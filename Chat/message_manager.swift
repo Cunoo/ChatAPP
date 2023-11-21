@@ -29,7 +29,7 @@ class MessagesManager: ObservableObject {
     @Published private(set) var messages: [Message] = []
     @Published private(set) var lastMessageId: String = ""
     @Published private var get_username = UserInformationHandling()
-    @Published private var value: String? = nil
+    @Published  var value: String? = nil
     var ref = Database.database(url:"https://chatappswiftui-eaa55-default-rtdb.europe-west1.firebasedatabase.app/").reference() // acces to database
     var userUID = Auth.auth().currentUser?.uid // get current UID
     //get user uid
@@ -45,6 +45,11 @@ class MessagesManager: ObservableObject {
             return error
         }
         
+    }
+    func testng_get_username(){
+        ref.child("users/\("8edoyGyFGKVP0IRv0UWBgyzuVtl1")/username").observe(.value) { snapshot in
+            self.value = snapshot.value as? String ?? "Load Failed"
+        }
     }
     
     func getUsername()  -> String {
@@ -106,11 +111,11 @@ class MessagesManager: ObservableObject {
         }
     }
     // Add a message in Firestore
-    func sendMessage(text: String) {
+    func sendMessage(text: String, userName: String) {
         
         do {
             // Create a new Message instance, with a unique ID, the text we passed, a received value set to false (since the user will always be the sender), and a timestamp
-            let newMessage = Message(id: "\(UUID())", text: text, received: false, timestamp: Date(), username: getUsername(), userUID:getUserIDFunc())
+            let newMessage = Message(id: "\(UUID())", text: text, received: false, timestamp: Date(), username: userName, userUID:getUserIDFunc())
             
             // Create a new document in Firestore with the newMessage variable above, and use setData(from:) to convert the Message into Firestore data
             // Note that setData(from:) is a function available only in FirebaseFirestoreSwift package - remember to import it at the top

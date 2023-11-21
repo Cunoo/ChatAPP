@@ -115,14 +115,14 @@ struct ProfileView: View {
                                     change_password_valid = true
                                     
                                     
-                                } else {
-                                    change_password_invalid = true
+                                }
+                                if(change_password.isEmpty && (change_password1 != change_password)) {
                                 }
                                 
                                 if( change_username == true && change_password_valid == true) {
                                     all_at_once = true
-                                    change_username = false
-                                    change_password_valid = false
+                                    //change_username = false
+                                    //change_password_valid = false
                                 }
                                 
                             }) // button
