@@ -1,6 +1,6 @@
 # ChatAPP
 
-Application for small Group of people that can communicate within each other
+Application for small Group of people that can communicate within each other (thought firebase)
 
 
 <img width="376" alt="Screenshot 2023-11-22 at 23 10 24" src="https://github.com/Cunoo/ChatAPP/assets/40718112/d48f6f64-b6e6-4105-8e2b-3f9cb8921d34">
